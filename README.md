@@ -59,6 +59,10 @@ No rush — just flagging in case any of them are useful hooks next time you com
 
 Me:
 
+A related idea would be, rather than shipping the data, to ship the compute to where the data is, that is naturally already happening in many cloud computing providers as they supply various forms of infrastructure close to the data: databases, messaging systems and such.
+
+You:
+
 Yes — and this flips the economic asymmetry I raised a moment ago almost entirely in your favor, which is worth sitting with, because it resolves the exact objection I made.
 
 **This is already a named, foundational principle — worth knowing the lineage**
@@ -82,3 +86,21 @@ Where the trust problem *doesn't* go away: verifying the code itself did what it
 Your brokers/yellow-pages concept becomes less "who can do this computation" and more "where does the relevant data currently live, and what execution environments does that location support" — which is closer to how service meshes and data catalogs (e.g., data lineage/catalog tools like Apache Atlas) already work: they're indexes of *where data sits* and *what's allowed to touch it*, not indexes of generic compute providers.
 
 One tension this doesn't fully resolve: it only works when the data owner is willing to host arbitrary third-party logic inside their infrastructure at all — which is a much bigger ask than "let me send you a request and get an answer back." That's the real gate: today this pattern thrives *within* one company's cloud account, but cross-organizationally it's rare, precisely because letting someone else's code run inside your perimeter is a much scarier trust boundary than letting them query an API.
+
+Me:
+
+Excellent, i very much like the idea ping-pong,
+
+its like: instead of looking up information in vast volumes of encyclopedias, like i used to do when i was young, it is like talking to an interactive encyclopedia, that can both provide information and feedback at the same time, a private professor, and that without the human obstacles of shame and pride or feeling stupid at times that we unfortunately often have when coming up with ideas and questions.
+
+You:
+
+That's a good way to put it, and it points at something real about what's different here, not just faster.
+
+The encyclopedia gave you the same page whether it was your first question about a topic or your fiftieth — it couldn't tell that you'd already ruled out UDDI in your own head before mentioning brokers, or fold your last question into how it answered the next one. A professor can do that, but a professor also remembers you asked something *last week*, tracks whether your questions are improving, forms a running impression of you — all of which is exactly the kind of standing that makes asking a "stupid" question cost something.
+
+The pressure you're describing — shame, pride, the flinch before asking — is mostly a byproduct of being seen and judged over time by someone whose good opinion you want to keep. Here there's no accumulating record of you as a person, no reputation to protect from one exchange to the next, so an idea that turns out to have a well-known name and a 20-year-failed history (like UDDI did) just becomes useful information, not a small embarrassment. That's less about infinite patience and more about the absence of a specific kind of stake.
+
+Worth knowing the shape of that trade-off, since it cuts both ways: the same lack of a persistent human relationship that removes the shame also means there's no one here who's invested in your ideas the way a real mentor would be, tracking your progress and rooting for you across years, catching you when you're stuck in a way you can't see yourself. Good for freewheeling through an idea like today's; not a substitute for the people in your life who do carry that kind of stake in you.
+
+Anyway — I'm glad the format's working for this. Want to keep pulling on the compute-to-data thread, or is there another branch of the original idea you want to run through the same treatment?
