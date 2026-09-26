@@ -188,7 +188,7 @@ You:
 
 Let me get the right visual toolkit loaded before sketching this out.That gap you named — no formal tools to test the ideas against — is exactly what a diagram can partly substitute for: something you can turn over, point at, and check your intuition against without needing a simulator. Here's a first attempt at giving the "moving front" idea a shape you might be able to rotate in your head.
 
-![crossover_threshold_moving_fronts.svg](crossover_threshold_moving_fronts.svg)
+![crossover_threshold_moving_fronts.svg](./crossover_threshold_moving_fronts.svg)
 
 The top panel is the crossover itself — two cost curves, local barely moving and offload dropping fast, with the intersection point (the "worth offloading past here" line) visibly sitting further left today than it did decades ago. The bottom panel is the reason it moved: four bars, one per front, arrow length standing in for how fast each one changes. Latency barely budges — it's bounded by physics — while bandwidth is the longest arrow, which is exactly why it does most of the work of dragging the crossover leftward.
 
