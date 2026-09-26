@@ -235,3 +235,31 @@ Your instinct about "waiting for an optimal size before it gets relatively cheap
 All three lines now climb toward the top-right, none of them turn back down, and both offload lines sit consistently above (i.e., cheaper than) where a naive extrapolation would put them once past their crossing point with the steep local line. The decades-ago line simply starts from a worse position and stays worse throughout — it never gets a chance to become the cheap option until the task is quite large.
 
 One thing worth flagging since it's easy to over-read into a two-line intersection: this linear model is a simplification that holds over the *middle* range of task sizes. At the extreme far right — genuinely enormous tasks — the offload line's flat slope is also a simplification; in reality bandwidth is finite, so past some point moving the data itself becomes the bottleneck again and the "gentle rise" would eventually steepen too. The diagram doesn't show that, because it's a straight-line approximation of a relationship that's really some kind of curve. Good to keep in the back of your mind as a limitation of the picture rather than a claim about physical reality at every scale.
+
+
+Me:
+
+yes that makes more sense, and naturally we are actually looking at a minimal 5 dimensional space.
+
+compute speed local / and compute speed specialized (GPU, Vector units, DSP,...)
+network bandwidth
+network latency
+storage cost
+
+one could almost say a minimal 4 and with each specialized unit a extra dimension is added if you want to be explicit.
+
+possibly a generalisation could be made if similar compute architectures exist on different units DSP/GPU for example.
+
+You:
+
+That's the right move, and it's worth naming precisely what you just did: the two-line crossover chart was a slice through this higher-dimensional space, holding everything except task size frozen. Real decisions never actually hold those other variables still — they all shift independently, which is exactly why the crossover point wanders the way you originally guessed.
+
+Your count is close to something that already exists as a formal tool: the **roofline model** in performance engineering. It plots arithmetic intensity (compute per byte moved) against achievable performance, and the "roofline" itself is a fold of two ceilings — a memory-bandwidth ceiling and a peak-compute ceiling — for one specific device. What you've spotted is that a full picture needs one roofline per candidate execution unit (CPU, GPU, DSP, vector unit), each with its own pair of ceilings, plus latency and storage sitting underneath as separate constraints that don't fold as neatly into a single "intensity" number. Practitioners genuinely do stack multiple rooflines on one chart to compare devices — so your instinct to treat each specialized unit as its own dimension rather than force it onto a shared axis matches how the field actually handles it.
+
+The generalization question you raised at the end — whether similar architectures could share an axis — is the more interesting fork, and it's been tried at a few different layers, with mixed success:
+
+- **BLAS/LAPACK** established decades ago that if you define a small set of primitive operations (matrix multiply, vector ops), you can write one interface and swap in a vendor-specific backend per hardware type, collapsing "which unit runs this" into a pluggable implementation rather than a separate axis in your own code.
+- **OpenCL** was an explicit attempt to do exactly what you're describing — one programming model spanning CPU, GPU, DSP, and FPGA — on the premise that enough of these devices share an underlying "many parallel lanes operating on a data stream" shape to be worth unifying.
+- More recently, compiler stacks like **XLA and MLIR** carry this further: define an intermediate representation for a computation, and let a backend compiler target whichever specialized unit is available, so the dimension-per-device problem becomes a compiler's problem rather than the application programmer's.
+
+Where this generalization reliably breaks down is exactly where you'd expect: it works well when the underlying primitive operation is genuinely shared (dense linear algebra looks similar whether it lands on a GPU or a vector unit), and it leaks badly when the specialized unit's whole value is doing something structurally different — an FPGA's advantage is custom bit-level pipelines, a DSP's is fixed-point filtering with hard real-time guarantees, and neither of those folds cleanly into "throughput per byte" the way dense matrix math does. So the honest generalization isn't one shared axis for all specialized compute — it's a handful of axis *families*, one per class of primitive operation, with devices grouped underneath whichever family they're actually good at. That's arguably the more useful frame than either "one dimension per device" or "one dimension for all specialization": group by what kind of work the unit is shaped for, and only then compare devices within a group.
