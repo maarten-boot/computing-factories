@@ -252,3 +252,52 @@ Every row in storage, network, and compute is a *rate* — a price or speed per 
 That's not a flaw in the data, it's just a real difference in kind — climate hazard forecasts arrive as scenario-conditioned milestones (a IPCC pathway → a dollar figure or exposure count at a named year), while manufactured-technology forecasts arrive as continuous trend curves. If this domain does become dominant the way you expect, the natural next step wouldn't be more rows in this same shape — it'd be picking one scenario (say SSP5-8.5) and finding whether anyone has modeled it as a continuous year-by-year cost trajectory rather than a handful of milestone snapshots, which would let it plug into the same rate-of-change analysis as everything else.
 
 [tech_trends_long4.csv](tech_trends_long4.csv)
+
+Me:
+
+yes i get that the data is different but as we go into a prognose mode we always can add a risk factor or a statistical likeliness of a predicted outcome like tolerance ranges in physics
+
+
+You:
+
+That's exactly the right instinct, and it's worth being precise about what a "tolerance range" means here — because forecasting uncertainty and physics measurement uncertainty aren't quite the same animal, even though they're drawn from the same family.
+
+**In physics, a tolerance is usually fixed** — an instrument has ±0.5% precision regardless of when you take the reading. **In forecasting, the tolerance itself grows with how far out you're looking.** That's exactly what the Nagy/Farmer technology-forecasting paper from earlier put a number on: forecast error (specifically, the square root of the logarithmic error) grows *linearly with the forecasting horizon*, at roughly 2.5%/year. A prediction for next year is tight; the same method's prediction for 2050 is necessarily loose, and honestly reporting that means the band has to widen, not stay constant. The everyday version of this is the hurricane forecast cone — narrow near the ship's current position, flaring wide five days out — and it's the same shape as the ensemble-forecast spread from the weather discussion a while back: many perturbed runs agreeing closely near-term, diverging wildly past the predictability horizon.
+
+Three different traditions for expressing this already showed up in what we've gathered, and they're structurally different things, not interchangeable:
+
+- **A stated confidence interval** — Epoch AI's own dollar-training-cost forecast reported their rate as "0.49 OOM/year (90% CI: 0.37 to 0.56)" — a single point estimate plus a symmetric-ish statistical band, closest to the physics-style tolerance you mentioned.
+- **A scenario branch, not a probability** — the IPCC-style SSP1-2.6 vs SSP5-8.5 rows we just added aren't a confidence interval around one number; they're two genuinely different futures conditioned on a policy/emissions choice nobody can assign a clean probability to yet. Treating that as "high estimate / low estimate" would misrepresent it — it's not that the truth is somewhere between 50% and 97%, it's that the truth is 50% *if* the world does X and 97% *if* it does Y.
+- **An empirical ensemble spread** — no formula at all, just "here's how much N independent perturbed runs disagree," which is really a distribution, not a range.
+
+For your CSV, I'd suggest extending the schema with three optional columns rather than forcing everything into one shape: `low_estimate`, `high_estimate`, and `uncertainty_type` (a short tag: `"90% CI"`, `"IPCC scenario range"`, `"ensemble spread"`, or `"none stated"` for the plain historical rows, which would just leave these three columns blank). That keeps the tidy long-form structure intact, lets you tell at a glance which of the three traditions a given band comes from, and avoids quietly treating a scenario branch as if it were a statistical confidence interval when it isn't.
+
+Concretely, that would turn a couple of existing rows into things like:
+
+```
+time,domain,metric,value,low_estimate,high_estimate,uncertainty_type,unit,note,source
+2032,compute,cost_training_run_threshold,,2031,2036,90% CI,year,"naive extrapolation of $233B training-run cost threshold (~1% of 2021 US GDP)",Epoch AI dollar training cost forecast
+```
+
+— where the uncertainty isn't on the value, it's on *when* the value gets crossed, which is its own wrinkle worth naming: some forecasts put the error bar on the number, others put it on the date, and those need slightly different columns to represent honestly.
+
+Want me to go ahead and restructure the full CSV with these three added columns, backfilling `uncertainty_type: none stated` for all the historical rows and properly tagging the handful of forecast rows (Epoch's CI, the two IPCC scenario rows) with their real bands?
+
+Me:
+
+yes please, thanks
+
+You:
+
+Done — 90 rows, 10 columns now. Three rows carry a real band, and each is tagged with what kind of band it actually is, per the distinction from last message:
+
+- **The two IPCC scenario rows** each show `low_estimate: 50, high_estimate: 97`, but the `uncertainty_type` field says outright *"not a probability — two named emissions pathways,"* so nobody scanning the file later mistakes this for a confidence interval. It isn't one — it's "50% if the world follows SSP1-2.6, 97% if it follows SSP5-8.5," and which one happens depends on emissions choices, not a dice roll.
+- **The new Epoch AI row** is the case where the uncertainty sits on the *date*, not the value — `value: 2032` with `low_estimate: 2031, high_estimate: 2036` tagged as a genuine `90% CI`, meaning the forecast is "training-run cost crosses ~1% of 2021 US GDP most likely around 2032, with 90% confidence it lands between 2031 and 2036." That's the real Epoch AI number, added as its own row since it didn't exist in the file until now.
+- **Every other row** — all 87 of the original historical measurements — now carries `uncertainty_type: none stated`, which is the honest label for a plain historical data point: not "certain," just never accompanied by a stated error bar in its source, so the file doesn't pretend precision it doesn't have.
+
+One thing worth flagging before you build further on this: the WEF/Accenture climate-cost figures ($81B/2035, $168B/2065, $3.3T cumulative/2055) stayed at `none stated` — I didn't find a published confidence band for those in what we pulled, and I'd rather leave them honestly unbounded than invent a plausible-looking range. If you ever find the underlying WEF methodology paper and it does publish a range, those three rows are the ones to go back and fill in.
+
+[tech_trends_long.csv](./tech_trends_long.csv)
+
+
+---

@@ -1,0 +1,91 @@
+time,domain,metric,value,low_estimate,high_estimate,uncertainty_type,unit,note,source
+1981,storage,cost,300000,,,none stated,USD/GB,"nominal, early HDD era (e.g. Seagate ST-506 class)",boingboing/isen.blog storage price tracker
+1987,storage,cost,50000,,,none stated,USD/GB,nominal,boingboing/isen.blog storage price tracker
+1990,storage,cost,10000,,,none stated,USD/GB,nominal,boingboing/isen.blog storage price tracker
+1994,storage,cost,1000,,,none stated,USD/GB,nominal,boingboing/isen.blog storage price tracker
+1997,storage,cost,100,,,none stated,USD/GB,nominal,boingboing/isen.blog storage price tracker
+2000,storage,cost,10,,,none stated,USD/GB,nominal,boingboing/isen.blog storage price tracker
+2004,storage,cost,1,,,none stated,USD/GB,nominal,boingboing/isen.blog storage price tracker
+2009,storage,cost,0.11,,,none stated,USD/GB,"nominal, Backblaze HDD fleet purchase average",Backblaze blog
+2010,storage,cost,0.10,,,none stated,USD/GB,nominal,boingboing/isen.blog storage price tracker
+2017,storage,cost,0.03,,,none stated,USD/GB,"nominal, Backblaze fleet average, 8TB era",Backblaze blog
+2018,storage,cost,0.019,,,none stated,USD/GB,"nominal, single retail 8TB HDD (Seagate BarraCuda)",humanprogress.org
+2022,storage,cost,0.0144,,,none stated,USD/GB,"nominal, Backblaze fleet average, 12-16TB era",Backblaze blog
+1997,storage,speed,10,,,none stated,MB/s,"HDD outer-track sequential, approx",goughlui.com HDD throughput trend
+2005,storage,speed,125,,,none stated,MB/s,7200rpm HDD (Dell Dimension era),forum benchmark thread
+2006,storage,speed,100,,,none stated,MB/s,7200rpm HDD (ThinkPad T60 era),forum benchmark thread
+2007,storage,speed,150,,,none stated,MB/s,SATA rev.1 practical ceiling,netweaver.uk storage history
+2012,storage,speed,343,,,none stated,MB/s,early consumer SATA SSD (OCZ),forum benchmark thread
+2017,storage,speed,600,,,none stated,MB/s,SATA III SSD practical ceiling,taylorandfrancis.com NVMe overview
+2020,storage,speed,3500,,,none stated,MB/s,consumer NVMe PCIe 3.0 M.2 drive,forum benchmark thread
+2024,storage,speed,10000,,,none stated,MB/s,consumer NVMe PCIe 5.0 M.2 drive (approx),forum benchmark thread
+2000,storage,latency,10,,,none stated,ms,"7200rpm HDD seek+rotational, approx, roughly flat 1990s-2010s",goughlui.com HDD throughput trend
+2012,storage,latency,0.1,,,none stated,ms,SATA SSD NAND access (approx),general industry figures
+2017,storage,latency,0.02,,,none stated,ms,"NVMe SSD access, tens of microseconds (approx)",general industry figures
+1993,network,speed,14.4,,,none stated,kbps,fastest consumer modem,gwsmedia.com internet speed history
+1994,network,speed,28.8,,,none stated,kbps,consumer modem,gwsmedia.com internet speed history
+1996,network,speed,33.6,,,none stated,kbps,consumer modem,gwsmedia.com internet speed history
+1998,network,speed,56,,,none stated,kbps,consumer modem,gwsmedia.com internet speed history
+2000,network,speed,512,,,none stated,kbps,early ADSL broadband launch (UK),gwsmedia.com internet speed history
+2004,network,speed,1000,,,none stated,kbps,typical broadband upper end (US),argentumit.com internet speed history
+2015,network,speed,43,,,none stated,Mbps,"US, weighted avg of most-popular tier",USTelecom Broadband Pricing Index
+2023,network,speed,940,,,none stated,Mbps,"US, gigabit-tier lower bound",USTelecom Broadband Pricing Index
+2025,network,speed,1000,,,none stated,Mbps,"US, gigabit tier, ~27% of subscribers",USTelecom Broadband Pricing Index
+2024,network,cost,49.25,,,none stated,USD/month,"US, 100-940Mbps tier, nominal",USTelecom Broadband Pricing Index
+2024,network,cost,98.68,,,none stated,USD/month,"US, 940Mbps-1Gbps gigabit tier, nominal",USTelecom Broadband Pricing Index
+2025,network,cost,44.95,,,none stated,USD/month,"US, 100-940Mbps tier, nominal",USTelecom Broadband Pricing Index
+1995,network,latency,150,,,none stated,ms,dial-up modem typical round-trip (approx),general industry figures
+2005,network,latency,40,,,none stated,ms,DSL/cable typical round-trip (approx),general industry figures
+2020,network,latency,15,,,none stated,ms,fiber typical round-trip (approx),general industry figures
+1961,compute,cost,18672000000,,,none stated,USD/GFLOPS,"nominal, IBM 7030 Stretch cluster",Wikipedia history of GFLOPS costs
+1984,compute,cost,18750000,,,none stated,USD/GFLOPS,"nominal, Cray X-MP/48",Wikipedia history of GFLOPS costs
+1997,compute,cost,30000,,,none stated,USD/GFLOPS,"nominal, Beowulf cluster (Pentium Pro)",Wikipedia history of GFLOPS costs
+2000,compute,cost,640,,,none stated,USD/GFLOPS,"nominal, KLAT2 Beowulf cluster",Wikipedia history of GFLOPS costs
+2003,compute,cost,82,,,none stated,USD/GFLOPS,"nominal, KASY0 cluster",Wikipedia history of GFLOPS costs
+2017,compute,cost,0.03,,,none stated,USD/GFLOPS,commodity hardware (approx),tinycomputers.io / humanprogress.org
+2023,compute,cost,0.02,,,none stated,USD/GFLOPS,commodity hardware (approx),tinycomputers.io
+1971,compute,speed,0.00074,,,none stated,GHz,Intel 4004 clock speed,general industry figures
+1981,compute,speed,0.0048,,,none stated,GHz,IBM PC 8088 clock speed (approx),general industry figures
+1995,compute,speed,0.1,,,none stated,GHz,Pentium-era clock speed (approx),general industry figures
+2000,compute,speed,1.5,,,none stated,GHz,Pentium 4 clock speed (approx),general industry figures
+2005,compute,speed,3.8,,,none stated,GHz,"Pentium 4 Extreme peak, approx, near Dennard-scaling ceiling",general industry figures
+2024,compute,speed,5.5,,,none stated,GHz,"consumer CPU peak turbo, approx, largely plateaued since mid-2000s",general industry figures
+1993,network,cost,9.95,,,none stated,USD/month,"AOL, 5 hrs/month + $3.50/hr overage",AOL company history retrospectives
+1996,network,cost,19.95,,,none stated,USD/month,"AOL, flat-rate unlimited dial-up",AOL company history retrospectives
+2003,network,cost,50,,,none stated,USD/month,"US average, DSL",FCC/OECD broadband comparison report 2003
+2003,network,cost,45,,,none stated,USD/month,"US average, cable broadband",FCC/OECD broadband comparison report 2003
+2006,network,cost,25.90,,,none stated,USD/month,"AOL dial-up, later-era pricing (push toward DSL)",CNET via retrospective article
+2010,network,cost,20,,,none stated,USD/month,"US, AT&T entry-level DSL package",GigaOM
+2011,network,cost,35,,,none stated,USD/month,"US, 100Mbps fiber via independent ISP (anecdotal, not a national average)",GigaOM
+2004,compute,speed_gpu,53,,,none stated,GFLOPS,"NVIDIA GeForce 6800 Ultra, flagship consumer GPU, FP32 peak",Nvidia developer forum GPU/CPU comparison sheet
+2005,compute,speed_gpu,165,,,none stated,GFLOPS,"NVIDIA GeForce 7800 GTX, flagship consumer GPU, FP32 peak",Nvidia developer forum GPU/CPU comparison sheet
+2018,compute,speed_gpu,13450,,,none stated,GFLOPS,"NVIDIA RTX 2080 Ti, flagship consumer GPU, FP32 peak",bizon-tech GPU benchmark specs
+2020,compute,speed_gpu,35580,,,none stated,GFLOPS,"NVIDIA RTX 3090, flagship consumer GPU, FP32 peak",bizon-tech GPU benchmark specs
+2022,compute,speed_gpu,82580,,,none stated,GFLOPS,"NVIDIA RTX 4090, flagship consumer GPU, FP32 peak",gxvtronics GPU spec review
+1998,network,cost_backbone,1200,,,none stated,USD/Mbps/month,"US IP transit, commodity wholesale price",DrPeering.net Internet Transit price tracking
+2000,network,cost_backbone,675,,,none stated,USD/Mbps/month,US IP transit,DrPeering.net Internet Transit price tracking
+2002,network,cost_backbone,200,,,none stated,USD/Mbps/month,US IP transit,DrPeering.net Internet Transit price tracking
+2005,network,cost_backbone,75,,,none stated,USD/Mbps/month,US IP transit,DrPeering.net Internet Transit price tracking
+2008,network,cost_backbone,12,,,none stated,USD/Mbps/month,US IP transit,DrPeering.net Internet Transit price tracking
+2010,network,cost_backbone,5,,,none stated,USD/Mbps/month,US IP transit,DrPeering.net Internet Transit price tracking
+2012,network,cost_backbone,2.34,,,none stated,USD/Mbps/month,US IP transit,DrPeering.net Internet Transit price tracking
+2015,network,cost_backbone,0.63,,,none stated,USD/Mbps/month,US IP transit,DrPeering.net Internet Transit price tracking
+2025,network,cost_backbone,0.07,,,none stated,USD/Mbps/month,"100GigE port, most competitive major hubs",TeleGeography IP transit price erosion report
+1983,network,speed_ethernet,10,,,none stated,Mbps,"10BASE-5, first IEEE 802.3 Ethernet standard",IEEE 802.3 standards history
+1995,network,speed_ethernet,100,,,none stated,Mbps,"100BASE-TX, Fast Ethernet",IEEE 802.3u standards history
+1999,network,speed_ethernet,1000,,,none stated,Mbps,"1000BASE-T, Gigabit Ethernet over copper",IEEE 802.3ab standards history
+2002,network,speed_ethernet,10000,,,none stated,Mbps,10 Gigabit Ethernet,IEEE 802.3ae standards history
+2010,network,speed_ethernet,100000,,,none stated,Mbps,100 Gigabit Ethernet ratified,IEEE 802.3ba / Ethernet Alliance history
+2017,network,speed_ethernet,400000,,,none stated,Mbps,400 Gigabit Ethernet,IEEE 802.3bs standards history
+2021,network,speed_ethernet,800000,,,none stated,Mbps,"800G Ethernet, standards development begins",IEEE 802.3df standards history
+1990,network,cost_leased_line,41000,,,none stated,USD/Mbps/month,"international 1.5Mbps leased line, approx. from GBP annual contract","BT leased-line pricing, telecom trade press 1990"
+1997,network,cost_leased_line,11111,,,none stated,USD/Mbps/month,"45Mbps transatlantic leased line, approx.","telecom industry mailing list, cs.columbia.edu archive"
+2025,network,cost_leased_line,390,,,none stated,USD/Mbps/month,"domestic US T1 (1.5Mbps), legacy tech now rising in $/Mbps as it is phased out","T1 line pricing guides, 2025"
+2035,climate_risk,cost_overlay,81000000000,,,none stated,USD/year,"additional annual running cost of today's data centers globally, attributable to extreme heat/drought climate hazards","WEF/Accenture data centre climate cost analysis, 2025"
+2065,climate_risk,cost_overlay,168000000000,,,none stated,USD/year,"additional annual running cost of today's data centers globally, attributable to climate hazards","WEF/Accenture data centre climate cost analysis, 2025"
+2055,climate_risk,cost_overlay_cumulative,3300000000000,,,none stated,USD total,"cumulative added running cost of today's data centers (2025-2055) from climate hazards; not an annual rate, do not mix with cost_overlay rows above","WEF/Accenture data centre climate cost analysis, 2025"
+2030,climate_risk,infrastructure_exposure,4400,,,none stated,miles fiber conduit,US terrestrial fiber-optic conduit projected at risk of flooding from sea-level rise,"Durairajan, Barford & Barford 2018, ANRW"
+2030,climate_risk,infrastructure_exposure,1100,,,none stated,colocation facilities,US colocation/internet facilities projected at risk of flooding from sea-level rise,"Durairajan, Barford & Barford 2018, ANRW"
+2052,climate_risk,infrastructure_exposure,50,50,97,IPCC scenario range (not a probability - two named emissions pathways),pct of global cable landing stations >500mm SLR,scenario SSP1-2.6 (warming to 1.5-2C above pre-industrial),"Clare et al. 2023, Earth-Science Reviews"
+2052,climate_risk,infrastructure_exposure,97,50,97,IPCC scenario range (not a probability - two named emissions pathways),pct of global cable landing stations >500mm SLR,scenario SSP5-8.5 (warming exceeding 4C above pre-industrial),"Clare et al. 2023, Earth-Science Reviews"
+2032,compute,cost_training_run_threshold_year,2032,2031,2036,90% CI,year,"projected year the most expensive ML training run's compute cost exceeds $233B (~1% of 2021 US GDP); naive extrapolation from 0.49 OOM/year cost growth, 1990-2022","Epoch AI, Trends in the Dollar Training Cost of Machine Learning Systems"
