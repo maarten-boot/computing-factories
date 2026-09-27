@@ -151,3 +151,54 @@ Leased lines between companies were naturally dominant in the early days of comp
 Cloud based datacenters favour high speed interconnects and give us a fast lane to transfer bulk data cheap.
 
 You:
+
+[tech_trends_long3.csv](./tech_trends_long3.csv)
+
+You're right, and it's not a minor scoping fix — it's a correction to the part of this whole exercise that matters most for the "compute factories" idea you started with. Home broadband was never really the right network to be tracking for that; datacenter and inter-datacenter interconnect is. Let me get real numbers for that instead.This connects to something you might not expect: the consumer/enterprise split in networking turns out to mirror the clock-speed/GPU split we found in compute a few turns back — same shape of bifurcation, different domain. Let me get the numbers into the file properly.This changes the picture for `network` more than a scoping tweak — it's the same domain splitting into two genuinely different populations, the way compute split into clock speed and GPU FLOPS.
+
+**Backbone/wholesale bandwidth (`cost_backbone`) behaves like storage and compute, not like consumer broadband.** IP transit — what a cloud provider or CDN actually pays to move bulk traffic between datacenters — declined at roughly 36%/year averaged from 1998 to 2025, and even in the most recent decade it's still falling at about 22%/year, dropping from $1,200/Mbps/month in 1998 to somewhere around $0.05–0.09/Mbps/month today on the highest-capacity ports. That's the same order of magnitude and the same shape as storage's and compute's cost declines — a real per-unit manufacturing/capacity cost falling on an exponential, not a subscription price holding steady the way consumer broadband's `$45-50/month` did for two decades. So the earlier observation — that network cost looked oddly flat compared to storage and compute — turns out to be an artifact of tracking the wrong population. The wholesale layer was moving the whole time; the consumer-facing markup on top of it just wasn't passing that decline through.
+
+**Ethernet standard rates give you the real datacenter "speed" dimension**, and it's a clean, well-documented sequence — 10 Mbps in 1983, 100 Mbps in 1995, 1 Gbps in 1999, 10 Gbps in 2002, 100 Gbps in 2010, 400 Gbps in 2017, with 800 Gbps standardization work starting in 2021. What's notable, and matches the pattern the Ethernet Alliance itself points out, is that the pace isn't steady — the first six speed generations took 30 years, and the next six are on track to take under ten. That's an accelerating regime, not a steady one, sitting right next to compute's clock speed doing the opposite (decelerating to near-zero) at almost the same time. Networking hasn't hit its version of the Dennard-scaling wall yet; if anything it sped up.
+
+**Leased lines gave you the pre-Ethernet-WAN anchor you mentioned, and they came with a genuine bonus finding: a real cost reversal, not a modeling artifact this time.** An international 1.5Mbps leased line ran roughly $40,000/Mbps/month in 1990, and a 45Mbps transatlantic circuit cost around $11,000/Mbps/month later that decade — eye-watering by today's standards, consistent with your point that leased circuits dominated and were expensive in computing's early days. But T1 pricing in the U.S. today is reported to be *rising* in $/Mbps terms, not falling — because it's a legacy technology past its economies-of-scale peak, maintained on aging infrastructure for a shrinking pool of customers who need its specific reliability guarantees. That's a legitimate instance of the thing you asked about weeks ago — "would very large tasks eventually cost more again" — just showing up on the technology-obsolescence axis instead of the task-size axis. Worth remembering as a genuine pattern, distinct from the earlier plotting bug: a technology can undergo real reversal once it's no longer the frontier and starts riding shrinking-scale economics instead of growing-scale ones.
+
+The schema note: I tagged these `cost_backbone`, `speed_ethernet`, and `cost_leased_line` rather than overloading your existing `network/cost` and `network/speed` rows, for the same reason as the GPU split — different populations, different units of comparison, and mixing them would make any pivot or average across "network cost" silently combine two things that don't belong together. Your file now has, in effect, two parallel network stories: a flat-priced, step-function consumer layer, and a steeply-declining, currently-accelerating wholesale/datacenter layer underneath it — which is arguably the more important one for the compute-factories idea this whole conversation started from, since that's the layer bulk data would actually move across.
+
+Me:
+
+can you redo te: Annualized rate of change: full period vs. most recent interval graph/table?
+
+You:
+
+Here's the updated table, now with the datacenter/enterprise network series included alongside everything else:
+
+
+![Screenshot_2026-09-27_18-46-35.png](./Screenshot_2026-09-27_18-46-35.png)
+
+```
+Annualized rate of change: full period vs. most recent interval (updated)
+% per year (log growth rate) by series
+
+series	Full-period avg (%/yr)	Most recent interval (%/yr)
+compute/cost	-44.5	-6.8
+compute/speed(clock)	16.8	1.9
+compute/speed(gpu)	40.8	42.1
+network/cost(home)	4.7	-78.6
+network/cost(backbone)	-36.1	-22
+network/cost(leased line)	-13.3	-12
+network/latency	-9.2	-6.5
+network/speed(home)	13.3	3.1
+network/speed(ethernet)	29.7	17.3
+storage/cost	-41.1	-6.9
+storage/latency	-36.6	-32.2
+storage/speed	25.6	26.2
+
+```
+
+The three new bars land exactly where last message's reasoning predicted, which is a good sign the story holds together:
+
+**`network/cost(backbone)`** sits right down with storage and compute cost at around −36%/year full-period, −22%/year recently — a real, steep, continuing decline. Compare that to **`network/cost(home)`**, which barely moves (4.7%/year full-period, and that wild −78.6% "recent" bar is still the single-year artifact flagged earlier — sparse, noisy, not a real signal). The gap between those two bars is the whole point: same domain, same unit, two populations moving at completely different rates depending on which layer of the stack you're pricing.
+
+**`network/speed(ethernet)`** shows the deceleration your dataset can actually detect for the first time in networking — 29.7%/year full-period down to 17.3%/year most recently — which is a bit surprising, since the earlier Ethernet Alliance framing described the last decade as *speeding up* (six standards in five years versus thirty). The likely reconciliation: this table measures percentage growth, and percentage growth naturally slows even while absolute jumps get more frequent, because each new standard is a smaller multiple of an already-huge number (400G is "only" 4x 100G, where 100G was 100,000x the original 10M). Worth flagging as a case where the growth-rate framing and the "pace of standardization" framing can point in different directions depending on which one you're asking about.
+
+**`network/cost(leased line)`** is the thinnest series here (only 3 points) so treat it cautiously, but it's the one showing a real decline rather than the reversal I described in prose last message — that's because I anchored the "recent" interval at 1997→2025 rather than capturing a shorter 2010s-to-now window where the actual uptick would show. If you want that reversal to show up numerically rather than just in the note, it'd need a fourth data point somewhere in the 2010s.
