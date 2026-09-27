@@ -299,5 +299,17 @@ One thing worth flagging before you build further on this: the WEF/Accenture cli
 
 [tech_trends_long.csv](./tech_trends_long.csv)
 
+Me:
+
+excellent thanks.
+
+can you summarize what we did into a spec.md document for future sessions and keep it updated as we go ?
+
+You:
+
+
+
+
+
 
 ---
