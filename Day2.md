@@ -308,7 +308,10 @@ can you summarize what we did into a spec.md document for future sessions and ke
 You:
 
 
-This is a good moment to consolidate — it's grown into a real project across several distinct threads. One honesty note before I build it: this file will live in this conversation's workspace and I'll keep revising it as we continue today, but a fresh chat session won't have it automatically — you'd need to re-upload it (or just tell me to reconstruct it, since the gist of the project is also tracked in my memory of you and I can rebuild it from there).Both files are there. From here, I'll keep `spec.md` in sync with `tech_trends_long.csv` as we go — any time we add a domain, split a metric, or land a real finding, I'll fold it in rather than let the two drift apart. Just let me know when you want to pick this back up.
+This is a good moment to consolidate — it's grown into a real project across several distinct threads. One honesty note before I build it: this file will live in this conversation's workspace and I'll keep revising it as we continue today, but a fresh chat session won't have it automatically — you'd need to re-upload it (or just tell me to reconstruct it, since the gist of the project is also tracked in my memory of you and I can rebuild it from there).
+
+
+Both files are there. From here, I'll keep `spec.md` in sync with `tech_trends_long.csv` as we go — any time we add a domain, split a metric, or land a real finding, I'll fold it in rather than let the two drift apart. Just let me know when you want to pick this back up.
 
 [spec.md](./spec.md)
 
