@@ -140,3 +140,14 @@ The chart above compares each series' rate averaged over its whole recorded span
 **Some of the network numbers should be discarded, not interpreted.** The most recent network/cost interval shows a −78.6%/year rate, which looks like a dramatic deceleration-into-collapse but is actually a single-year artifact — two different pricing tiers ($98.68 gigabit vs. $44.95 standard) compared across one year, not a real trend. This is the data-sparsity trap from a few turns ago showing up concretely: with only 2-3 points and inconsistent measurement conventions across sources, "acceleration" numbers here are noise, not signal. Worth remembering as you extend the file — a rate computed from two points is only as meaningful as those two points are comparable.
 
 **So, is there already a question worth asking?** Yes, and it's sharper than "will costs keep falling" — it's: **is the storage/compute cost deceleration structural (a real approach to physical limits, like areal density or transistor scaling) or is it a measurement-convention artifact (early data points were "cheapest record-setting configuration available," recent points are "commodity fleet average," which is a different and inherently slower-moving quantity)?** That's exactly the kind of question the Farmer/Nagy technology-forecasting group and the regime-switching econometrics work were built to adjudicate — and it's answerable, in principle, by finding a like-for-like series (e.g., cheapest-available $/GFLOPS continuously through to today, rather than switching definitions partway through) rather than by more raw data collection. That would be the natural next move: not add more series, but make one existing series — storage or compute cost — internally consistent enough to trust its own deceleration signal.
+
+Me:
+
+One note I need to make about networks.
+
+The current data you provided seems to focus on home connectivity while in datacenters and between datacenters ethernet with its classical 1M,10M,100M, 1G 5G 10G 40G 100G, ... is more dominating.
+
+Leased lines between companies were naturally dominant in the early days of computing,  but with the rise of standardized network technology (ethernet) in its new form of optical connections, we have to look both at home connections and datacenter connections.
+Cloud based datacenters favour high speed interconnects and give us a fast lane to transfer bulk data cheap.
+
+You:
