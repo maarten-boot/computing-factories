@@ -101,3 +101,42 @@ The numbers back up the intuition sharply. A recent World Economic Forum / Accen
 That's worth sitting with for a moment: everything in your dataset so far — storage, compute, network — has only ever gotten cheaper and faster, decade over decade, through wars, recessions, and industry collapses. Climate-driven cooling cost is arguably the first candidate force with the physical scale to break that pattern rather than just slow it. Whether it will or won't is genuinely unknown — it depends on how fast cooling technology (liquid cooling, immersion cooling, siting decisions) improves relative to how fast climate hazards worsen, which is exactly the "two competing rates" framing you built a few steps back, just with a new competitor that's never been in the race before.
 
 And this is where your closing point lands the whole conversation somewhere honest: yes, this makes the data messier, and that's not a flaw to fix, it's the nature of what you're doing. Every method we walked through today — Wright's/Moore's law forecasting, regime-switching factor models, IRDS's rolling roadmap, ensemble weather forecasting — exists precisely because long-horizon prediction is fuzzy by construction, not because anyone's been sloppy. The Santa Fe Institute researchers who forecast technology costs put a number on that fuzziness rather than pretending it away: their model's own uncertainty grows at a fairly steady rate the further out you look. Lorenz's finding was even blunter — past roughly two weeks, even a perfect model with perfect data can't forecast weather at all, not because of bad instruments but because the system is structurally chaotic. Your model doesn't need to resolve that tension to be worth building. It needs to carry it honestly — which, given everything you've been doing with notes, sources, and caveats in that CSV, is exactly the habit you've already been practicing.
+
+Me:
+
+So we now have some concrete data over a period of 50 years. What can we say about the rate of change and after that the acceleration/stagnation/slowdown of that change ?
+if the is currently already a question we  can ask ?
+
+You:
+
+Now let me actually compute the rates from the corrected data.
+
+![Screenshot_2026-09-27_18-20-32.png](./Screenshot_2026-09-27_18-20-32.png)
+
+```
+Annualized rate of change: full period vs. most recent interval
+% per year (log growth rate) by series
+
+series	Full-period avg (%/yr)	Most recent interval (%/yr)
+compute/cost	        -44.5	-6.8
+compute/speed(clock)	16.8	1.9
+compute/speed(gpu)	    40.8	42.1
+network/cost	         4.7	-78.6
+network/latency	        -9.2	-6.5
+network/speed	        13.3	3.1
+storage/cost	-       41.1	-6.9
+storage/latency	-       36.6	-32.2
+storage/speed	        25.6	26.2
+```
+
+The chart above compares each series' rate averaged over its whole recorded span against its rate over just the most recent interval we have. That comparison is the crudest possible acceleration signal — first derivative (full-period) versus first derivative (recent) — but it's exactly what your accelerating/steady/decelerating framing calls for, and a few real patterns fall out of it cleanly enough to trust, while a couple don't.
+
+**Two series show unambiguous, well-corroborated deceleration.** Storage cost went from declining at roughly 41%/year averaged over 1981-2022 to just 6.9%/year in the most recent interval (2018-2022) — and compute cost per GFLOPS shows the same shape, from 44.5%/year down to 6.8%/year. These aren't isolated to your dataset: the storage slowdown matches what's publicly known as the Kryder's Law slowdown, industry-documented since around 2010 as areal density scaling hit physical limits. That external corroboration is what makes this the trustworthy signal in the chart, not an artifact of your particular sources.
+
+**One series shows dramatic deceleration that you already knew the cause of.** Compute clock speed goes from a 16.8%/year full-period average down to essentially flat — 1.9%/year since 2005. That's Dennard scaling breaking down, exactly as we discussed a few turns back. Good sanity check: the method reproduces a known historical event correctly.
+
+**One series shows no deceleration at all — GPU FLOPS is holding steady, not slowing.** 40.8%/year over the full period versus 42.1%/year in the most recent interval. Unlike clock speed, parallel compute hasn't hit its wall yet in this data. That's the more interesting result, because it directly contradicts what you'd guess if you only tracked "compute speed" as a single clock-speed number — the real compounding is happening entirely in the dimension that number leaves out.
+
+**Some of the network numbers should be discarded, not interpreted.** The most recent network/cost interval shows a −78.6%/year rate, which looks like a dramatic deceleration-into-collapse but is actually a single-year artifact — two different pricing tiers ($98.68 gigabit vs. $44.95 standard) compared across one year, not a real trend. This is the data-sparsity trap from a few turns ago showing up concretely: with only 2-3 points and inconsistent measurement conventions across sources, "acceleration" numbers here are noise, not signal. Worth remembering as you extend the file — a rate computed from two points is only as meaningful as those two points are comparable.
+
+**So, is there already a question worth asking?** Yes, and it's sharper than "will costs keep falling" — it's: **is the storage/compute cost deceleration structural (a real approach to physical limits, like areal density or transistor scaling) or is it a measurement-convention artifact (early data points were "cheapest record-setting configuration available," recent points are "commodity fleet average," which is a different and inherently slower-moving quantity)?** That's exactly the kind of question the Farmer/Nagy technology-forecasting group and the regime-switching econometrics work were built to adjudicate — and it's answerable, in principle, by finding a like-for-like series (e.g., cheapest-available $/GFLOPS continuously through to today, rather than switching definitions partway through) rather than by more raw data collection. That would be the natural next move: not add more series, but make one existing series — storage or compute cost — internally consistent enough to trust its own deceleration signal.
