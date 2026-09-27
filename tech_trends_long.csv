@@ -1,0 +1,52 @@
+time,domain,metric,value,unit,note,source
+1981,storage,cost,300000,USD/GB,"nominal, early HDD era (e.g. Seagate ST-506 class)",boingboing/isen.blog storage price tracker
+1987,storage,cost,50000,USD/GB,nominal,boingboing/isen.blog storage price tracker
+1990,storage,cost,10000,USD/GB,nominal,boingboing/isen.blog storage price tracker
+1994,storage,cost,1000,USD/GB,nominal,boingboing/isen.blog storage price tracker
+1997,storage,cost,100,USD/GB,nominal,boingboing/isen.blog storage price tracker
+2000,storage,cost,10,USD/GB,nominal,boingboing/isen.blog storage price tracker
+2004,storage,cost,1,USD/GB,nominal,boingboing/isen.blog storage price tracker
+2009,storage,cost,0.11,USD/GB,"nominal, Backblaze HDD fleet purchase average",Backblaze blog
+2010,storage,cost,0.10,USD/GB,nominal,boingboing/isen.blog storage price tracker
+2017,storage,cost,0.03,USD/GB,"nominal, Backblaze fleet average, 8TB era",Backblaze blog
+2018,storage,cost,0.019,USD/GB,"nominal, single retail 8TB HDD (Seagate BarraCuda)",humanprogress.org
+2022,storage,cost,0.0144,USD/GB,"nominal, Backblaze fleet average, 12-16TB era",Backblaze blog
+1997,storage,speed,10,MB/s,"HDD outer-track sequential, approx",goughlui.com HDD throughput trend
+2005,storage,speed,125,MB/s,7200rpm HDD (Dell Dimension era),forum benchmark thread
+2006,storage,speed,100,MB/s,7200rpm HDD (ThinkPad T60 era),forum benchmark thread
+2007,storage,speed,150,MB/s,SATA rev.1 practical ceiling,netweaver.uk storage history
+2012,storage,speed,343,MB/s,early consumer SATA SSD (OCZ),forum benchmark thread
+2017,storage,speed,600,MB/s,SATA III SSD practical ceiling,taylorandfrancis.com NVMe overview
+2020,storage,speed,3500,MB/s,consumer NVMe PCIe 3.0 M.2 drive,forum benchmark thread
+2024,storage,speed,10000,MB/s,consumer NVMe PCIe 5.0 M.2 drive (approx),forum benchmark thread
+2000,storage,latency,10,ms,"7200rpm HDD seek+rotational, approx, roughly flat 1990s-2010s",goughlui.com HDD throughput trend
+2012,storage,latency,0.1,ms,SATA SSD NAND access (approx),general industry figures
+2017,storage,latency,0.02,ms,NVMe SSD access, tens of microseconds (approx),general industry figures
+1993,network,speed,14.4,kbps,fastest consumer modem,gwsmedia.com internet speed history
+1994,network,speed,28.8,kbps,consumer modem,gwsmedia.com internet speed history
+1996,network,speed,33.6,kbps,consumer modem,gwsmedia.com internet speed history
+1998,network,speed,56,kbps,consumer modem,gwsmedia.com internet speed history
+2000,network,speed,512,kbps,early ADSL broadband launch (UK),gwsmedia.com internet speed history
+2004,network,speed,1000,kbps,typical broadband upper end (US),argentumit.com internet speed history
+2015,network,speed,43,Mbps,"US, weighted avg of most-popular tier",USTelecom Broadband Pricing Index
+2023,network,speed,940,Mbps,"US, gigabit-tier lower bound",USTelecom Broadband Pricing Index
+2025,network,speed,1000,Mbps,"US, gigabit tier, ~27% of subscribers",USTelecom Broadband Pricing Index
+2024,network,cost,49.25,USD/month,"US, 100-940Mbps tier, nominal",USTelecom Broadband Pricing Index
+2024,network,cost,98.68,USD/month,"US, 940Mbps-1Gbps gigabit tier, nominal",USTelecom Broadband Pricing Index
+2025,network,cost,44.95,USD/month,"US, 100-940Mbps tier, nominal",USTelecom Broadband Pricing Index
+1995,network,latency,150,ms,dial-up modem typical round-trip (approx),general industry figures
+2005,network,latency,40,ms,DSL/cable typical round-trip (approx),general industry figures
+2020,network,latency,15,ms,fiber typical round-trip (approx),general industry figures
+1961,compute,cost,18672000000,USD/GFLOPS,"nominal, IBM 7030 Stretch cluster",Wikipedia history of GFLOPS costs
+1984,compute,cost,18750000,USD/GFLOPS,"nominal, Cray X-MP/48",Wikipedia history of GFLOPS costs
+1997,compute,cost,30000,USD/GFLOPS,"nominal, Beowulf cluster (Pentium Pro)",Wikipedia history of GFLOPS costs
+2000,compute,cost,640,USD/GFLOPS,"nominal, KLAT2 Beowulf cluster",Wikipedia history of GFLOPS costs
+2003,compute,cost,82,USD/GFLOPS,"nominal, KASY0 cluster",Wikipedia history of GFLOPS costs
+2017,compute,cost,0.03,USD/GFLOPS,commodity hardware (approx),tinycomputers.io / humanprogress.org
+2023,compute,cost,0.02,USD/GFLOPS,commodity hardware (approx),tinycomputers.io
+1971,compute,speed,0.00074,GHz,Intel 4004 clock speed,general industry figures
+1981,compute,speed,0.0048,GHz,IBM PC 8088 clock speed (approx),general industry figures
+1995,compute,speed,0.1,GHz,Pentium-era clock speed (approx),general industry figures
+2000,compute,speed,1.5,GHz,Pentium 4 clock speed (approx),general industry figures
+2005,compute,speed,3.8,GHz,"Pentium 4 Extreme peak, approx, near Dennard-scaling ceiling",general industry figures
+2024,compute,speed,5.5,GHz,"consumer CPU peak turbo, approx, largely plateaued since mid-2000s",general industry figures
